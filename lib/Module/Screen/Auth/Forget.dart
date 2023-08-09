@@ -20,7 +20,7 @@ class ForgetWidget extends StatefulWidget {
   const ForgetWidget({Key? key}) : super(key: key);
 
   @override
-  _ForgetWidgetState createState() => _ForgetWidgetState()
+  _ForgetWidgetState createState() => _ForgetWidgetState();
 }
 
 class _ForgetWidgetState extends State<ForgetWidget> {
