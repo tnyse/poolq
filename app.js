@@ -578,10 +578,19 @@ app.get('/getnlf/:week', async (req, res) => {
 
 
 
-app.get('/pay', (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + '/index.html');
+app.get('/success', (req, res) => {
+  const path = resolve(process.env.STATIC_DIR + '/success.html');
   res.sendFile(path);
 });
+
+
+
+app.get('/cancel', (req, res) => {
+  const path = resolve(process.env.STATIC_DIR + '/cancel.html');
+  res.sendFile(path);
+});
+
+
 
 app.get('/config', (req, res) => {
   res.send({
@@ -664,7 +673,22 @@ app.post('/webhook', async (req, res) => {
 
 
 
+app.post('/create-checkout-session', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+        price: "price_1Nr7mCE84s4AdL4OvLuUx7SG",
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `https://poolq.app/success`,
+    cancel_url: `https://poolq.app/cancel`,
+  });
 
+  res.redirect(303, session.url);
+});
 
 
 
