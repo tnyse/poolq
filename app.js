@@ -578,7 +578,7 @@ app.get('/getnlf/:week', async (req, res) => {
 
 
 
-app.get('/', (req, res) => {
+app.get('/pay', (req, res) => {
   const path = resolve(process.env.STATIC_DIR + '/index.html');
   res.sendFile(path);
 });
