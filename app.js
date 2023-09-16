@@ -47,6 +47,32 @@ const firebaseConfig = {
 
 const fb_app = initializeApp(firebaseConfig);
 const db = getFirestore(fb_app);
+const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
+// app.use(morgan(':method :url :status :user-agent - :response-time ms'));
+// app.use(formidable());
+app.use(express.static('./client'));
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({extended: true}));
+// const mongoose = require('mongoose');
+// app.use(express.static(process.env.STATIC_DIR));
+app.use(
+ express.json({
+   // We need the raw body to verify webhook signatures.
+   // Let's compute it only when hitting the Stripe webhook endpoint.
+   verify: function (req, res, buf) {
+     if (req.originalUrl.startsWith('/webhook')) {
+       req.rawBody = buf.toString();
+     }
+   },
+ })
+);
 
 
   // create and connect redis client to local instance.
@@ -81,26 +107,8 @@ async function getLeaderBoard(db, week) {
 
 
 
-app.use(cors());
-// app.use(morgan(':method :url :status :user-agent - :response-time ms'));
-// app.use(formidable());
-app.use(express.static('./client'));
-app.use(express.json());
-app.use(cookieParser());
-app.use(express.urlencoded({extended: true}));
-// const mongoose = require('mongoose');
-// app.use(express.static(process.env.STATIC_DIR));
-app.use(
-  express.json({
-    // We need the raw body to verify webhook signatures.
-    // Let's compute it only when hitting the Stripe webhook endpoint.
-    verify: function (req, res, buf) {
-      if (req.originalUrl.startsWith('/webhook')) {
-        req.rawBody = buf.toString();
-      }
-    },
-  })
-);
+
+
 
 
 
