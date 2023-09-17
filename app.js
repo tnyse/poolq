@@ -622,6 +622,46 @@ app.get('/config', (req, res) => {
   });
 });
 
+
+
+
+async function setPayment (db, data) {
+  const paymentRef = collection(db, 'payment');
+  const paymentSnapshot = await setDoc(doc(paymentRef), data);
+  return  paymentSnapshot;
+}
+
+
+
+app.post('/payment_update', (req, res) => {
+  console.log('💰 Payment captured!');
+  console.log("very successful payment done")
+  console.log("very successful payment done")
+  console.log("very successful payment done")
+  console.log("very successful payment done")
+  setPayment(db, {uid: req.cookies.id})
+  res.send({
+    message: "done",
+  });
+});
+
+
+
+app.post('/payment_init', (req, res) => {
+  console.log('💰 Payment captured!');
+  console.log("init done")
+  console.log("init done")
+  console.log("init done")
+  console.log("init done")
+  res.cookie("id", req.body.id)
+  res.send({
+    message: "done",
+  });
+});
+
+
+
+
 app.get('/create-payment-intent', async (req, res) => {
   // Create a PaymentIntent with the amount, currency, and a payment method type.
   //
