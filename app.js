@@ -683,6 +683,10 @@ app.post('/webhook', async (req, res) => {
     // Fulfill any orders, e-mail receipts, etc
     // To cancel the payment after capture you will need to issue a Refund (https://stripe.com/docs/api/refunds)
     console.log('💰 Payment captured!');
+    console.log("very successful payment done")
+    console.log("very successful payment done")
+    console.log("very successful payment done")
+    console.log("very successful payment done")
   } else if (eventType === 'payment_intent.payment_failed') {
     console.log('❌ Payment failed.');
   }
