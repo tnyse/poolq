@@ -590,6 +590,15 @@ app.get('/pay', (req, res) => {
   const path = resolve(process.env.STATIC_DIR + '/index.html');
 
   res.sendFile(path);
+  
+}); 
+
+
+
+app.get('/return', (req, res) => {
+  const path = resolve(process.env.STATIC_DIR + '/return.html');
+
+  res.sendFile(path);
   setTimeout(()=>{
     console.log("very successful payment done")
     console.log("very successful payment done")
