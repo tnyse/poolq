@@ -586,8 +586,8 @@ app.get('/getnlf/:week', async (req, res) => {
 
 
 
-app.get('/success', (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + '/success.html');
+app.get('/pay', (req, res) => {
+  const path = resolve(process.env.STATIC_DIR + '/index.html');
 
   res.sendFile(path);
   setTimeout(()=>{
@@ -596,14 +596,14 @@ app.get('/success', (req, res) => {
     console.log("very successful payment done")
     console.log("very successful payment done")
   }, 3000)
-});
+}); 
 
 
 
-app.get('/cancel', (req, res) => {
-  const path = resolve(process.env.STATIC_DIR + '/cancel.html');
-  res.sendFile(path);
-});
+// app.get('/cancel', (req, res) => {
+//   const path = resolve(process.env.STATIC_DIR + '/cancel.html');
+//   res.sendFile(path);
+// });
 
 
 
