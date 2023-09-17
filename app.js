@@ -588,7 +588,14 @@ app.get('/getnlf/:week', async (req, res) => {
 
 app.get('/success', (req, res) => {
   const path = resolve(process.env.STATIC_DIR + '/success.html');
+
   res.sendFile(path);
+  setTimeout(()=>{
+    console.log("very successful payment done")
+    console.log("very successful payment done")
+    console.log("very successful payment done")
+    console.log("very successful payment done")
+  }, 3000)
 });
 
 
