@@ -637,23 +637,33 @@ app.post('/payment_update', (req, res) => {
   console.log('💰 Payment captured!');
   console.log("very successful payment done")
   console.log("very successful payment done")
-  console.log("very successful payment done")
-  console.log("very successful payment done")
-  setPayment(db, {uid: req.cookies.id})
-  res.send({
-    message: "done",
-  });
+  
+    let data = {
+    week: req.cookies.week,
+    tiebreaker: req.cookies.tiebreaker,
+    date: req.cookies.date,
+    picks: req.cookies.picks,
+    uid: req.cookies.uid,
+    displayName:req.cookies.displayName,
+    photoURL: req.cookies.photoURL,
+  }
+  
+  res.send(data);
 });
 
 
 
 app.post('/payment_init', (req, res) => {
-  console.log('💰 Payment captured!');
   console.log("init done")
   console.log("init done")
-  console.log("init done")
-  console.log("init done")
-  res.cookie("id", req.body.id)
+
+  res.cookie("week", req.body.week)
+  res.cookie("tiebreaker", req.body.tiebreaker)
+  res.cookie("date", req.body.date)
+  res.cookie("picks", req.body.picks)
+  res.cookie("uid", req.body.uid)
+  res.cookie("displayName", req.body.displayName)
+  res.cookie("photoURL", req.body.photoURL)
   res.send({
     message: "done",
   });
