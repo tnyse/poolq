@@ -26,19 +26,24 @@
     <script>
 
 
+setTimeout(function () {
+            window.location.href = "https://poolq.app/leaderboard";
+            // window.clearTimeout(tID);		// clear time out.
+        }, 3000);
 
-
-  axios({
-  method: 'post',
-  url: 'https://poolq.app/payment_update',
-  data: {
+//   axios({
+//   method: 'post',
+//   url: 'https://poolq.app/payment_update',
+//   data: {
      
-  }
-}).then((response) => {
-  console.log(response.data);
-}, (error) => {
-  console.log(error);
-});
+//   }
+// }).then((response) => {
+//   console.log(response.data);
+// }, (error) => {
+//   console.log(error);
+// });
+
+
 
     </script>
   </body>
