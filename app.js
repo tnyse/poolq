@@ -663,8 +663,11 @@ app.post('/payment_init', (req, res) => {
   res.cookie("uid", req.body.uid)
   res.cookie("displayName", req.body.displayName)
   res.cookie("photoURL", req.body.photoURL)
+
   res.send({
     message: "done",
+    displayName: req.body.displayName,
+    uid: req.body.uid
   });
 });
 
