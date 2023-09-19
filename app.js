@@ -635,8 +635,6 @@ async function setPayment (db, data) {
 
 app.post('/payment_update', (req, res) => {
   console.log('💰 Payment captured!');
-  console.log("very successful payment done")
-  console.log("very successful payment done")
   
     let data = {
     week: req.cookies.week,
@@ -647,6 +645,8 @@ app.post('/payment_update', (req, res) => {
     displayName:req.cookies.displayName,
     photoURL: req.cookies.photoURL,
   }
+
+  console.log(data)
   
   res.send(data);
 });
