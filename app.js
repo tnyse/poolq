@@ -633,7 +633,7 @@ async function setPayment (db, data) {
 
 
 
-app.post('/payment_update', (req, res) => {
+app.get('/payment_update', (req, res) => {
   console.log('💰 Payment captured!');
   
     let data = {
@@ -643,7 +643,6 @@ app.post('/payment_update', (req, res) => {
     picks: req.cookies.picks,
     uid: req.cookies.uid,
     displayName:req.cookies.displayName,
-    photoURL: req.cookies.photoURL,
   }
 
   console.log(data)
